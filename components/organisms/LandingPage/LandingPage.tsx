@@ -1,7 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { ImageUpload } from "../molecules/Form/ImageUpload";
+import { ImageUpload } from "../../molecules/Form/ImageUpload";
+import { InteractiveHoverButton } from "@/components/atoms/Button/InteractiveHoverButton";
 
 export const LandingPage = () => {
   return (
@@ -11,7 +12,9 @@ export const LandingPage = () => {
           <div className="w-full min-h-96 border border-dashed bg-white dark:bg-black border-neutral-200 dark:border-neutral-800 rounded-lg">
             <ImageUpload />
           </div>
-          <div></div>
+          <div>
+            <InteractiveHoverButton text="Test" />
+          </div>
         </div>
       </div>
     </div>
