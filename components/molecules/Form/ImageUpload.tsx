@@ -27,6 +27,7 @@ export const ImageUpload = ({
   const [file, setFile] = useState<File | null>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
   const [isLoading, setIsLoading] = useState(false);
+  const [isLoadingRule, setIsLoadingRule] = useState(false);
   const { setImageUrl } = useDetectionStore();
 
   const validateFile = (inputFile: File): File | null => {
@@ -76,7 +77,7 @@ export const ImageUpload = ({
     maxSize: MAX_SIZE_MB * 1024 * 1024,
   });
 
-  const handleUpload = async () => {
+  const handleDetectImage = async () => {
     if (!file) return;
 
     const formData = new FormData();
@@ -103,6 +104,35 @@ export const ImageUpload = ({
       console.error("Error:", error);
     } finally {
       setIsLoading(false);
+    }
+  };
+
+  const handleDetectBoxes = async () => {
+    if (!file) return;
+
+    const formData = new FormData();
+    formData.append("file", file);
+    setIsLoadingRule(true);
+
+    try {
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_YOLO_SERVICE_HOST}/detect`,
+        {
+          method: "POST",
+          body: formData,
+        }
+      );
+
+      if (!response.ok) {
+        throw new Error("Image detection failed");
+      }
+
+      const data = await response.json();
+      const boxes = data?.boxes;
+    } catch (error) {
+      console.error("Error:", error);
+    } finally {
+      setIsLoadingRule(false);
     }
   };
 
@@ -242,7 +272,13 @@ export const ImageUpload = ({
       <div className="">
         <InteractiveHoverButton
           text="Run Model Detection"
-          onClick={handleUpload}
+          onClick={handleDetectImage}
+        />
+      </div>
+      <div className="">
+        <InteractiveHoverButton
+          text="Run Rule Matching"
+          onClick={handleDetectBoxes}
         />
       </div>
     </div>
