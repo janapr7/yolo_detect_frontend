@@ -12,7 +12,11 @@
   --font-mono: var(--font-geist-mono);
   --color-primary: #0a0a0a;
   --color-dark-primary: #ededed;
+  --color-background: #0a0a0a;
+  --color-dark-background: #ededed;
 }
+
+@custom-variant dark (&:where(.dark, .dark *));
 
 @media (prefers-color-scheme: dark) {
   :root {
@@ -25,4 +29,5 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+  scroll-behavior: smooth;
 }

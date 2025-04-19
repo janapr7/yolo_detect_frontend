@@ -24,12 +24,14 @@ export const MinWidthFallback = () => {
 
   if (currentViewport > 0 && currentViewport < 320) {
     return (
-      <div className="fixed inset-0 z-[99999999] flex items-center justify-center bg-white dark:bg-black p-5">
+      <div className="fixed inset-0 z-[99999999] flex items-center justify-center bg-dark-background dark:bg-background p-5">
         {currentViewport < 250 ? (
           "👋"
         ) : (
           <div className="flex flex-col items-center justify-center gap-1">
-            <Typography variant="body1">PALM DETECTION APP</Typography>
+            <Typography variant="body1" className="font-bold">
+              Palm Type Detection App
+            </Typography>
             <Typography variant="body2">Using YOLOv8l Model</Typography>
           </div>
         )}

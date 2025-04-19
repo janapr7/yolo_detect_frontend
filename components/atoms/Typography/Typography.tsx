@@ -43,7 +43,7 @@ export const Typography: React.FC<TypographyProps> = ({
     <Component
       className={cn(
         baseClasses,
-        "text-neutral-700 dark:text-neutral-300 font-sans",
+        "text-primary dark:text-dark-primary font-sans",
         className
       )}
       {...props}

@@ -20,15 +20,20 @@ const secondaryVariant = {
 };
 
 export const ImageUpload = ({
-  onChange,
+  file,
+  setFile,
 }: {
-  onChange?: (file: File | null) => void;
+  file: File | null;
+  setFile: (file: File | null) => void;
 }) => {
-  const [file, setFile] = useState<File | null>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
-  const [isLoading, setIsLoading] = useState(false);
-  const [isLoadingRule, setIsLoadingRule] = useState(false);
-  const { setImageUrl } = useDetectionStore();
+  const {
+    setImageUrl,
+    isLoading,
+    setIsLoading,
+    isLoadingRule,
+    setIsLoadingRule,
+  } = useDetectionStore();
 
   const validateFile = (inputFile: File): File | null => {
     const isValidType =
@@ -37,7 +42,7 @@ export const ImageUpload = ({
 
     if (!isValidType || !isValidSize) {
       console.warn(
-        `File "${inputFile.name}" rejected. Must be .jpg/.jpeg and <= 5MB.`
+        `File "${inputFile.name}" rejected. Must be .jpg/.jpeg and <= ${MAX_SIZE_MB}MB.`
       );
       return null;
     }
@@ -50,7 +55,7 @@ export const ImageUpload = ({
       const validFile = validateFile(newFiles[0]);
       if (validFile) {
         setFile(validFile);
-        onChange && onChange(validFile);
+        setImageUrl("");
       }
     }
   };
@@ -62,6 +67,7 @@ export const ImageUpload = ({
   const handleRemoveFile = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.stopPropagation();
     setFile(null);
+    setImageUrl("");
   };
 
   const { getRootProps, isDragActive } = useDropzone({
@@ -78,10 +84,11 @@ export const ImageUpload = ({
   });
 
   const handleDetectImage = async () => {
-    if (!file) return;
+    if (!file || isLoading || isLoadingRule) return;
 
     const formData = new FormData();
     formData.append("file", file);
+    setImageUrl("");
     setIsLoading(true);
 
     try {
@@ -107,38 +114,9 @@ export const ImageUpload = ({
     }
   };
 
-  const handleDetectBoxes = async () => {
-    if (!file) return;
-
-    const formData = new FormData();
-    formData.append("file", file);
-    setIsLoadingRule(true);
-
-    try {
-      const response = await fetch(
-        `${process.env.NEXT_PUBLIC_YOLO_SERVICE_HOST}/detect`,
-        {
-          method: "POST",
-          body: formData,
-        }
-      );
-
-      if (!response.ok) {
-        throw new Error("Image detection failed");
-      }
-
-      const data = await response.json();
-      const boxes = data?.boxes;
-    } catch (error) {
-      console.error("Error:", error);
-    } finally {
-      setIsLoadingRule(false);
-    }
-  };
-
   return (
-    <div className="w-full flex flex-col gap-10" {...getRootProps()}>
-      <div className="w-full min-h-96 border border-dashed bg-white dark:bg-black border-neutral-200 dark:border-neutral-800 rounded-lg">
+    <div className="w-full flex flex-col gap-5" {...getRootProps()}>
+      <div className="w-full min-h-72 border border-dashed bg-dark-background dark:bg-background border-neutral-200 dark:border-neutral-800 rounded-lg">
         <motion.div
           onClick={handleClick}
           whileHover="animate"
@@ -176,7 +154,7 @@ export const ImageUpload = ({
                   key={"file-preview"}
                   layoutId={"file-upload"}
                   className={cn(
-                    "relative overflow-hidden z-40 bg-white dark:bg-neutral-900 flex flex-col items-start justify-start md:h-24 p-4 mt-4 w-full mx-auto rounded-md",
+                    "relative overflow-hidden z-40 bg-dark-background dark:bg-background flex flex-col items-start justify-start md:h-24 p-4 mt-4 w-full mx-auto rounded-md",
                     "shadow-sm"
                   )}
                 >
@@ -194,7 +172,7 @@ export const ImageUpload = ({
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         layout
-                        className="rounded-lg px-2 py-1 w-fit shrink-0 text-sm text-neutral-600 dark:bg-neutral-800 dark:text-white shadow-input"
+                        className="rounded-lg px-2 py-1 w-fit shrink-0 text-sm text-primary dark:bg-background bg-dark-background dark:text-dark-primary shadow-input"
                       >
                         {(file.size / (1024 * 1024)).toFixed(2)} MB
                       </motion.p>
@@ -204,7 +182,7 @@ export const ImageUpload = ({
                         layout
                         onClick={handleRemoveFile}
                       >
-                        <X className="text-neutral-600 dark:text-white w-5 h-5 cursor-pointer opacity-80 hover:opacity-100" />
+                        <X className="text-primary dark:text-dark-primary w-5 h-5 cursor-pointer opacity-80 hover:opacity-100" />
                       </motion.button>
                     </div>
                   </div>
@@ -269,16 +247,12 @@ export const ImageUpload = ({
         </motion.div>
       </div>
 
-      <div className="">
+      <div className="w-full">
         <InteractiveHoverButton
           text="Run Model Detection"
           onClick={handleDetectImage}
-        />
-      </div>
-      <div className="">
-        <InteractiveHoverButton
-          text="Run Rule Matching"
-          onClick={handleDetectBoxes}
+          disabled={!!!file}
+          isLoading={isLoading}
         />
       </div>
     </div>
