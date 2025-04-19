@@ -25,9 +25,9 @@ const variantMap: Record<TypographyVariant, string> = {
   h4: "text-xl font-medium",
   h5: "text-lg font-medium",
   h6: "text-base font-medium",
-  body1: "text-base text-gray-800",
-  body2: "text-sm text-gray-700",
-  caption: "text-xs text-gray-500",
+  body1: "text-base",
+  body2: "text-sm",
+  caption: "text-xs",
 };
 
 export const Typography: React.FC<TypographyProps> = ({
@@ -43,7 +43,7 @@ export const Typography: React.FC<TypographyProps> = ({
     <Component
       className={cn(
         baseClasses,
-        "text-neutral-700 dark:text-neutral-300",
+        "text-primary dark:text-dark-primary font-sans",
         className
       )}
       {...props}
