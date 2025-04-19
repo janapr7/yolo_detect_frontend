@@ -116,7 +116,7 @@ export const ImageUpload = ({
 
   return (
     <div className="w-full flex flex-col gap-5" {...getRootProps()}>
-      <div className="w-full min-h-72 border border-dashed bg-dark-background dark:bg-background border-neutral-200 dark:border-neutral-800 rounded-lg">
+      <div className="w-full min-h-72 border border-dashed bg-dark-background dark:bg-background border-dark-secondary dark:border-secondary rounded-lg">
         <motion.div
           onClick={handleClick}
           whileHover="animate"
@@ -140,10 +140,10 @@ export const ImageUpload = ({
             <GridPattern />
           </div>
           <div className="flex flex-col items-center justify-center">
-            <p className="relative z-20 font-sans font-bold text-neutral-700 dark:text-neutral-300 text-base">
+            <p className="relative z-20 font-sans font-bold text-secondary dark:text-dark-secondary text-base">
               Upload file
             </p>
-            <p className="relative z-20 font-sans font-normal text-neutral-400 dark:text-neutral-400 text-base mt-2 text-center">
+            <p className="relative z-20 font-sans font-normal text-secondary/80 dark:text-dark-secondary/80 text-base mt-2 text-center">
               Drag or drop your <strong>JPG/JPEG</strong> file{" "}
               <span className="whitespace-nowrap">(max {MAX_SIZE_MB}</span>
               MB)
@@ -154,7 +154,7 @@ export const ImageUpload = ({
                   key={"file-preview"}
                   layoutId={"file-upload"}
                   className={cn(
-                    "relative overflow-hidden z-40 bg-dark-background dark:bg-neutral-900 flex flex-col items-start justify-start md:h-24 p-4 mt-4 w-full mx-auto rounded-md",
+                    "relative overflow-hidden z-40 bg-dark-secondary dark:bg-secondary flex flex-col items-start justify-start md:h-24 p-4 mt-4 w-full mx-auto rounded-md",
                     "shadow-sm"
                   )}
                 >
@@ -226,13 +226,13 @@ export const ImageUpload = ({
                       <motion.p
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
-                        className="text-neutral-600 flex flex-col items-center"
+                        className="text-neutral-800 flex flex-col gap-2 items-center dark:text-neutral-200"
                       >
                         Drop it
-                        <IconUpload className="h-4 w-4 text-neutral-600 dark:text-neutral-400" />
+                        <IconUpload className="h-4 w-4 text-neutral-800 dark:text-neutral-200" />
                       </motion.p>
                     ) : (
-                      <IconUpload className="h-4 w-4 text-neutral-600 dark:text-neutral-300" />
+                      <IconUpload className="h-4 w-4 text-neutral-600 dark:text-neutral-400" />
                     )}
                   </motion.div>
 
