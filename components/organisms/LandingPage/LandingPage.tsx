@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import { ImageUpload } from "../../molecules/Form/ImageUpload";
-import { InteractiveHoverButton } from "@/components/atoms/Button/InteractiveHoverButton";
 import { useDetectionStore } from "@/stores/useDetectionStore";
 import { NavBar } from "@/components/molecules/NavBar/NavBar";
 import { MatchRule } from "@/components/molecules/MatchRule/MatchRule";

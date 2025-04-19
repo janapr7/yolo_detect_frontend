@@ -154,7 +154,7 @@ export const ImageUpload = ({
                   key={"file-preview"}
                   layoutId={"file-upload"}
                   className={cn(
-                    "relative overflow-hidden z-40 bg-dark-background dark:bg-background flex flex-col items-start justify-start md:h-24 p-4 mt-4 w-full mx-auto rounded-md",
+                    "relative overflow-hidden z-40 bg-dark-background dark:bg-neutral-900 flex flex-col items-start justify-start md:h-24 p-4 mt-4 w-full mx-auto rounded-md",
                     "shadow-sm"
                   )}
                 >

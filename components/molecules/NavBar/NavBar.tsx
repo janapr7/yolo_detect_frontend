@@ -10,12 +10,12 @@ export const NavBar = () => {
       <Disclosure
         as="header"
         className={cn(
-          "w-full flex justify-center bg-dark-background dark:bg-background sticky top-0 backdrop-filter backdrop-blur-lg bg-opacity-50 z-50 px-5"
+          "w-full flex justify-center sticky top-0 backdrop-filter backdrop-blur-2xl bg-opacity-50 z-50 px-5"
         )}
       >
         {({ open }) => (
           <>
-            <div className="w-full max-w-4xl py-5">
+            <div className="w-full max-w-4xl py-3">
               <div className="flex h-16 justify-between">
                 <div className="z-10 flex">
                   <div

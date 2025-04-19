@@ -1,27 +1,27 @@
 export const DETECTION_RULE = {
-  category_1: {
-    fire: {
+  category1: {
+    Fire: {
       openness: "",
       conscientiousness: "",
       extraversion: "+",
       agreeableness: "-",
       neuroticism: "",
     },
-    water: {
+    Water: {
       openness: "-",
       conscientiousness: "-",
       extraversion: "-",
       agreeableness: "+",
       neuroticism: "+",
     },
-    earth: {
+    Earth: {
       openness: "-",
       conscientiousness: "+",
       extraversion: "",
       agreeableness: "",
       neuroticism: "",
     },
-    air: {
+    Air: {
       openness: "+",
       conscientiousness: "+",
       extraversion: "+",
@@ -29,22 +29,22 @@ export const DETECTION_RULE = {
       neuroticism: "",
     },
   },
-  category_2: {
-    high_fline: {
+  category2: {
+    High_FLine: {
       openness: "-",
       conscientiousness: "-",
       extraversion: "-",
       agreeableness: "+",
       neuroticism: "+",
     },
-    medium_fline: {
+    Medium_FLine: {
       openness: "",
       conscientiousness: "",
       extraversion: "+",
       agreeableness: "",
       neuroticism: "+",
     },
-    low_fline: {
+    Low_FLine: {
       openness: "",
       conscientiousness: "",
       extraversion: "+",
@@ -52,15 +52,15 @@ export const DETECTION_RULE = {
       neuroticism: "-",
     },
   },
-  category_3: {
-    long_mercuryf: {
+  category3: {
+    Long_MercuryF: {
       openness: "+",
       conscientiousness: "",
       extraversion: "",
       agreeableness: "",
       neuroticism: "-",
     },
-    short_mercuryf: {
+    Short_MercuryF: {
       openness: "-",
       conscientiousness: "",
       extraversion: "",
@@ -68,15 +68,15 @@ export const DETECTION_RULE = {
       neuroticism: "+",
     },
   },
-  category_4: {
-    high_lmars: {
+  category4: {
+    High_LMars: {
       openness: "",
       conscientiousness: "+",
       extraversion: "+",
       agreeableness: "-",
       neuroticism: "",
     },
-    low_lmars: {
+    Low_LMars: {
       openness: "",
       conscientiousness: "-",
       extraversion: "+",
@@ -87,8 +87,9 @@ export const DETECTION_RULE = {
 };
 
 export const CATEGORY_LIST = {
-  category_1: ["fire", "water", "earth", "air"],
-  category_2: ["high_fline", "medium_fline", "low_fline"],
-  categoty_3: ["long_mercuryf", "short_mercuryf"],
-  category_4: ["high_lmars", "low_lmars"],
+  category1: ["Fire", "Water", "Earth", "Air"],
+  category2: ["High_FLine", "Medium_FLine", "Low_FLine"],
+  category3: ["Long_MercuryF", "Short_MercuryF"],
+  category4: ["High_LMars", "Low_LMars"],
+  category5: ["Saturnus_Line"],
 };
