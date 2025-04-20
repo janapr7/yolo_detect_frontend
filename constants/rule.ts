@@ -1,4 +1,6 @@
-export const DETECTION_RULE = {
+import { DetectionRule } from "@/types/detection";
+
+export const DETECTION_RULE: DetectionRule = {
   category1: {
     Fire: {
       openness: "",

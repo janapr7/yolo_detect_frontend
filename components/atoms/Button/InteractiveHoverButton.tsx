@@ -16,7 +16,7 @@ export const InteractiveHoverButton = React.forwardRef<
     <button
       ref={ref}
       className={cn(
-        "group relative w-full sm:w-60 cursor-pointer overflow-hidden rounded border border-primary dark:border-dark-primary bg-dark-primary dark:bg-primary p-2 text-center font-semibold",
+        "group relative w-full sm:w-60 cursor-pointer overflow-hidden rounded border border-primary/20 dark:border-dark-primary/20 bg-dark-primary dark:bg-primary p-2 text-center font-medium shadow",
         disabled && "opacity-10 cursor-default",
         isLoading && "bg-primary dark:bg-dark-primary ",
         className

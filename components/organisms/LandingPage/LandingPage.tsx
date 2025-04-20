@@ -13,7 +13,7 @@ export const LandingPage = () => {
   return (
     <div className="w-full h-full min-h-[100dvh] bg-dark-background dark:bg-background flex flex-col">
       <NavBar />
-      <div className="w-full h-full flex justify-center gap-10 px-5 py-10">
+      <div className="w-full h-full flex justify-center gap-10 px-5 pt-10 pb-20">
         <div className="w-full max-w-4xl flex flex-col gap-18">
           <div className="w-full flex flex-col gap-5">
             <ImageUpload file={file} setFile={setFile} />
@@ -29,7 +29,7 @@ export const LandingPage = () => {
               <img
                 src={imageUrl}
                 alt="detected image"
-                className="w-full border border-primary dark:border-dark-primary rounded"
+                className="w-full border border-primary dark:border-dark-primary rounded shadow-2xl"
               />
             )}
           </div>

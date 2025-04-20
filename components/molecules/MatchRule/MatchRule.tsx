@@ -5,17 +5,8 @@ import { useState } from "react";
 import { RuleTabs } from "./RuleTabs";
 import { CategoryResultTable } from "./CategoryResultTable";
 import { cn } from "@/utils/cn";
-
-type Detection = {
-  label: string;
-  confidence: number;
-  bbox: number[];
-};
-
-type CategoryResult = {
-  label: string;
-  confidence: number;
-} | null;
+import { RuleTable } from "./RuleTable";
+import { CategoryResult, Detection } from "@/types/detection";
 
 export const MatchRule = ({ file }: { file: File | null }) => {
   const { isLoading, isLoadingRule, setIsLoadingRule } = useDetectionStore();
@@ -72,7 +63,6 @@ export const MatchRule = ({ file }: { file: File | null }) => {
       const data = await response.json();
       const boxes = data?.boxes;
       setCategoryResults(getTopDetectionsByCategory(boxes));
-      console.log("box>>>", getTopDetectionsByCategory(boxes));
     } catch (error) {
       console.error("Error:", error);
     } finally {
@@ -94,8 +84,8 @@ export const MatchRule = ({ file }: { file: File | null }) => {
       <div
         className={cn("hidden w-full flex-col gap-5", isLoadingRule && "flex")}
       >
-        <div className="w-full sm:w-68 rounded h-10 bg-zinc-200 dark:bg-zinc-800 animate-pulse" />
-        <div className="w-full rounded h-60 bg-zinc-200 dark:bg-zinc-800 animate-pulse" />
+        <div className="w-full sm:w-68 rounded h-9 bg-zinc-200 dark:bg-zinc-800 animate-pulse" />
+        <div className="w-full rounded h-47 bg-zinc-200 dark:bg-zinc-800 animate-pulse" />
       </div>
 
       {(categoryResults?.category1?.label ||
@@ -111,6 +101,9 @@ export const MatchRule = ({ file }: { file: File | null }) => {
           <div className="w-full flex justify-start">
             {selectedValue === "cat1" && (
               <CategoryResultTable categoryResults={categoryResults} />
+            )}
+            {selectedValue === "cat2" && (
+              <RuleTable categoryResults={categoryResults} />
             )}
           </div>
         </>
