@@ -6,6 +6,12 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/atoms/Table/Table";
+import {
+  TABLE_CELL_CLASS_HEAD,
+  TABLE_ROW_CLASS,
+  TABLE_ROW_CLASS_HEAD,
+} from "@/constants/style";
+import { TABLE_CELL_CLASS } from "@/constants/style";
 import { cn } from "@/utils/cn";
 
 export const CategoryResultTable = ({
@@ -13,76 +19,77 @@ export const CategoryResultTable = ({
 }: {
   categoryResults: any;
 }) => {
-  const tableRowClassHead =
-    "*:border-dark-secondary/80 dark:*:border-secondary/80 hover:bg-dark-secondary/50 dark:hover:bg-secondary/50 [&>:not(:last-child)]:border-r text-primary dark:text-dark-primary bg-dark-secondary/40 dark:bg-secondary/40";
-  const tableRowClass =
-    "*:border-dark-secondary/80 dark:*:border-secondary/80 hover:bg-dark-secondary/50 dark:hover:bg-secondary/50 [&>:not(:last-child)]:border-r text-primary dark:text-dark-primary";
-  const tableCellClass = "py-3";
   return (
     <div className="w-full overflow-x-auto">
       <div className="w-full min-w-120 rounded border border-dark-secondary/80 dark:border-secondary/80">
         <Table>
           <TableHeader>
-            <TableRow className={cn(tableRowClassHead)}>
-              <TableHead className={cn(tableCellClass, "")}>Category</TableHead>
-              <TableHead className={cn(tableCellClass)}>Detected</TableHead>
-              <TableHead className={cn(tableCellClass)}>Confidence</TableHead>
+            <TableRow className={cn(TABLE_ROW_CLASS_HEAD)}>
+              <TableHead className={cn(TABLE_CELL_CLASS_HEAD, "")}>
+                Category
+              </TableHead>
+              <TableHead className={cn(TABLE_CELL_CLASS_HEAD)}>
+                Detected
+              </TableHead>
+              <TableHead className={cn(TABLE_CELL_CLASS_HEAD)}>
+                Confidence
+              </TableHead>
             </TableRow>
           </TableHeader>
 
           <TableBody>
-            <TableRow className={cn(tableRowClass)}>
-              <TableCell className={cn(tableCellClass)}>
+            <TableRow className={cn(TABLE_ROW_CLASS)}>
+              <TableCell className={cn(TABLE_CELL_CLASS)}>
                 Water/Fire/Earth/Air
               </TableCell>
-              <TableCell className={cn(tableCellClass)}>
+              <TableCell className={cn(TABLE_CELL_CLASS)}>
                 {categoryResults?.category1?.label || "-"}
               </TableCell>
-              <TableCell className={cn(tableCellClass)}>
+              <TableCell className={cn(TABLE_CELL_CLASS)}>
                 {categoryResults?.category1?.confidence?.toFixed(2) || "-"}
               </TableCell>
             </TableRow>
-            <TableRow className={cn(tableRowClass)}>
-              <TableCell className={cn(tableCellClass)}>
-                FLine (Short/Medium/High)
+            <TableRow className={cn(TABLE_ROW_CLASS)}>
+              <TableCell className={cn(TABLE_CELL_CLASS)}>
+                LineFreq (Short/Medium/High)
               </TableCell>
-              <TableCell className={cn(tableCellClass)}>
+              <TableCell className={cn(TABLE_CELL_CLASS)}>
                 {categoryResults?.category2?.label || "-"}
               </TableCell>
-              <TableCell className={cn(tableCellClass)}>
+              <TableCell className={cn(TABLE_CELL_CLASS)}>
                 {categoryResults?.category2?.confidence?.toFixed(2) || "-"}
               </TableCell>
             </TableRow>
-            <TableRow className={cn(tableRowClass)}>
-              <TableCell className={cn(tableCellClass)}>
+            <TableRow className={cn(TABLE_ROW_CLASS)}>
+              <TableCell className={cn(TABLE_CELL_CLASS)}>
                 MercuryF (Short/Long)
               </TableCell>
-              <TableCell className={cn(tableCellClass)}>
+              <TableCell className={cn(TABLE_CELL_CLASS)}>
                 {categoryResults?.category3?.label || "-"}
               </TableCell>
-              <TableCell className={cn(tableCellClass)}>
+              <TableCell className={cn(TABLE_CELL_CLASS)}>
                 {categoryResults?.category3?.confidence?.toFixed(2) || "-"}
               </TableCell>
             </TableRow>
-            <TableRow className={cn(tableRowClass)}>
-              <TableCell className={cn(tableCellClass)}>
+            <TableRow className={cn(TABLE_ROW_CLASS)}>
+              <TableCell className={cn(TABLE_CELL_CLASS)}>
                 LMars (Low/High)
               </TableCell>
-              <TableCell className={cn(tableCellClass)}>
+              <TableCell className={cn(TABLE_CELL_CLASS)}>
                 {categoryResults?.category4?.label || "-"}
               </TableCell>
-              <TableCell className={cn(tableCellClass)}>
+              <TableCell className={cn(TABLE_CELL_CLASS)}>
                 {categoryResults?.category4?.confidence?.toFixed(2) || "-"}
               </TableCell>
             </TableRow>
-            <TableRow className={cn(tableRowClass)}>
-              <TableCell className={cn(tableCellClass)}>
+            <TableRow className={cn(TABLE_ROW_CLASS)}>
+              <TableCell className={cn(TABLE_CELL_CLASS)}>
                 Saturnus_Line
               </TableCell>
-              <TableCell className={cn(tableCellClass)}>
+              <TableCell className={cn(TABLE_CELL_CLASS)}>
                 {categoryResults?.category5?.label || "-"}
               </TableCell>
-              <TableCell className={cn(tableCellClass)}>
+              <TableCell className={cn(TABLE_CELL_CLASS)}>
                 {categoryResults?.category5?.confidence?.toFixed(2) || "-"}
               </TableCell>
             </TableRow>

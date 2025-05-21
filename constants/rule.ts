@@ -81,7 +81,7 @@ export const DETECTION_RULE: DetectionRule = {
     Low_LMars: {
       openness: "",
       conscientiousness: "-",
-      extraversion: "+",
+      extraversion: "-",
       agreeableness: "+",
       neuroticism: "",
     },
