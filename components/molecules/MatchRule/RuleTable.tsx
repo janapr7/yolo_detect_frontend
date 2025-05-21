@@ -68,34 +68,34 @@ export const RuleTable = ({ categoryResults }: { categoryResults: any }) => {
     "*:border-dark-secondary/80 dark:*:border-secondary/80 hover:bg-dark-secondary/50 dark:hover:bg-secondary/50 [&>:not(:last-child)]:border-r text-primary dark:text-dark-primary bg-dark-secondary/40 dark:bg-secondary/40";
   const tableRowClass =
     "*:border-dark-secondary/80 dark:*:border-secondary/80 hover:bg-dark-secondary/50 dark:hover:bg-secondary/50 [&>:not(:last-child)]:border-r text-primary dark:text-dark-primary";
-  const tableCellClass = " py-2";
+  const tableCellClass = "py-3";
   return (
     <div className="w-full overflow-x-auto">
       <div className="w-full min-w-120 rounded border border-dark-secondary/80 dark:border-secondary/80">
         <Table>
           <TableHeader>
             <TableRow className={cn(tableRowClassHead)}>
-              <TableHead className={cn(tableCellClass, "")}>Trait</TableHead>
-              <TableHead className="py-2">Total (+)</TableHead>
-              <TableHead className="py-2">Total (-)</TableHead>
-              <TableHead className="py-2">is Saturnus?</TableHead>
-              <TableHead className="py-2">Level</TableHead>
+              <TableHead className={cn(tableCellClass)}>Trait</TableHead>
+              <TableHead className={cn(tableCellClass)}>Total (+)</TableHead>
+              <TableHead className={cn(tableCellClass)}>Total (-)</TableHead>
+              <TableHead className={cn(tableCellClass)}>is Saturnus?</TableHead>
+              <TableHead className={cn(tableCellClass)}>Level</TableHead>
             </TableRow>
           </TableHeader>
 
           <TableBody>
             <TableRow className={cn(tableRowClass)}>
               <TableCell className={cn(tableCellClass)}>Openness</TableCell>
-              <TableCell className="py-2">
+              <TableCell className={cn(tableCellClass)}>
                 {ruleValue.openness.positive}
               </TableCell>
-              <TableCell className="py-2">
+              <TableCell className={cn(tableCellClass)}>
                 {ruleValue.openness.negative}
               </TableCell>
-              <TableCell className="py-2">
+              <TableCell className={cn(tableCellClass)}>
                 {isSaturnus ? "Yes" : "No"}
               </TableCell>
-              <TableCell className="py-2">
+              <TableCell className={cn(tableCellClass)}>
                 {handleTraitLevel("openness")}
               </TableCell>
             </TableRow>
@@ -104,32 +104,32 @@ export const RuleTable = ({ categoryResults }: { categoryResults: any }) => {
               <TableCell className={cn(tableCellClass)}>
                 Conscientiousness
               </TableCell>
-              <TableCell className="py-2">
+              <TableCell className={cn(tableCellClass)}>
                 {ruleValue.conscientiousness.positive}
               </TableCell>
-              <TableCell className="py-2">
+              <TableCell className={cn(tableCellClass)}>
                 {ruleValue.conscientiousness.negative}
               </TableCell>
-              <TableCell className="py-2">
+              <TableCell className={cn(tableCellClass)}>
                 {isSaturnus ? "Yes" : "No"}
               </TableCell>
-              <TableCell className="py-2">
+              <TableCell className={cn(tableCellClass)}>
                 {handleTraitLevel("conscientiousness")}
               </TableCell>
             </TableRow>
 
             <TableRow className={cn(tableRowClass)}>
               <TableCell className={cn(tableCellClass)}>Extraversion</TableCell>
-              <TableCell className="py-2">
+              <TableCell className={cn(tableCellClass)}>
                 {ruleValue.extraversion.positive}
               </TableCell>
-              <TableCell className="py-2">
+              <TableCell className={cn(tableCellClass)}>
                 {ruleValue.extraversion.negative}
               </TableCell>
-              <TableCell className="py-2">
+              <TableCell className={cn(tableCellClass)}>
                 {isSaturnus ? "Yes" : "No"}
               </TableCell>
-              <TableCell className="py-2">
+              <TableCell className={cn(tableCellClass)}>
                 {handleTraitLevel("extraversion")}
               </TableCell>
             </TableRow>
@@ -138,32 +138,32 @@ export const RuleTable = ({ categoryResults }: { categoryResults: any }) => {
               <TableCell className={cn(tableCellClass)}>
                 Agreeableness
               </TableCell>
-              <TableCell className="py-2">
+              <TableCell className={cn(tableCellClass)}>
                 {ruleValue.agreeableness.positive}
               </TableCell>
-              <TableCell className="py-2">
+              <TableCell className={cn(tableCellClass)}>
                 {ruleValue.agreeableness.negative}
               </TableCell>
-              <TableCell className="py-2">
+              <TableCell className={cn(tableCellClass)}>
                 {isSaturnus ? "Yes" : "No"}
               </TableCell>
-              <TableCell className="py-2">
+              <TableCell className={cn(tableCellClass)}>
                 {handleTraitLevel("agreeableness")}
               </TableCell>
             </TableRow>
 
             <TableRow className={cn(tableRowClass)}>
               <TableCell className={cn(tableCellClass)}>Neuroticism</TableCell>
-              <TableCell className="py-2">
+              <TableCell className={cn(tableCellClass)}>
                 {ruleValue.neuroticism.positive}
               </TableCell>
-              <TableCell className="py-2">
+              <TableCell className={cn(tableCellClass)}>
                 {ruleValue.neuroticism.negative}
               </TableCell>
-              <TableCell className="py-2">
+              <TableCell className={cn(tableCellClass)}>
                 {isSaturnus ? "Yes" : "No"}
               </TableCell>
-              <TableCell className="py-2">
+              <TableCell className={cn(tableCellClass)}>
                 {handleTraitLevel("neuroticism")}
               </TableCell>
             </TableRow>

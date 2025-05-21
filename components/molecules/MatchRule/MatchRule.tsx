@@ -85,7 +85,7 @@ export const MatchRule = ({ file }: { file: File | null }) => {
         className={cn("hidden w-full flex-col gap-5", isLoadingRule && "flex")}
       >
         <div className="w-full sm:w-68 rounded h-9 bg-zinc-200 dark:bg-zinc-800 animate-pulse" />
-        <div className="w-full rounded h-47 bg-zinc-200 dark:bg-zinc-800 animate-pulse" />
+        <div className="w-full rounded h-69 bg-zinc-200 dark:bg-zinc-800 animate-pulse" />
       </div>
 
       {(categoryResults?.category1?.label ||

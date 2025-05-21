@@ -17,7 +17,7 @@ export const CategoryResultTable = ({
     "*:border-dark-secondary/80 dark:*:border-secondary/80 hover:bg-dark-secondary/50 dark:hover:bg-secondary/50 [&>:not(:last-child)]:border-r text-primary dark:text-dark-primary bg-dark-secondary/40 dark:bg-secondary/40";
   const tableRowClass =
     "*:border-dark-secondary/80 dark:*:border-secondary/80 hover:bg-dark-secondary/50 dark:hover:bg-secondary/50 [&>:not(:last-child)]:border-r text-primary dark:text-dark-primary";
-  const tableCellClass = "py-2";
+  const tableCellClass = "py-3";
   return (
     <div className="w-full overflow-x-auto">
       <div className="w-full min-w-120 rounded border border-dark-secondary/80 dark:border-secondary/80">
@@ -25,8 +25,8 @@ export const CategoryResultTable = ({
           <TableHeader>
             <TableRow className={cn(tableRowClassHead)}>
               <TableHead className={cn(tableCellClass, "")}>Category</TableHead>
-              <TableHead className="py-2">Detected</TableHead>
-              <TableHead className="py-2">Confidence</TableHead>
+              <TableHead className={cn(tableCellClass)}>Detected</TableHead>
+              <TableHead className={cn(tableCellClass)}>Confidence</TableHead>
             </TableRow>
           </TableHeader>
 
@@ -35,10 +35,10 @@ export const CategoryResultTable = ({
               <TableCell className={cn(tableCellClass)}>
                 Water/Fire/Earth/Air
               </TableCell>
-              <TableCell className="py-2">
+              <TableCell className={cn(tableCellClass)}>
                 {categoryResults?.category1?.label || "-"}
               </TableCell>
-              <TableCell className="py-2">
+              <TableCell className={cn(tableCellClass)}>
                 {categoryResults?.category1?.confidence?.toFixed(2) || "-"}
               </TableCell>
             </TableRow>
@@ -46,10 +46,10 @@ export const CategoryResultTable = ({
               <TableCell className={cn(tableCellClass)}>
                 FLine (Short/Medium/High)
               </TableCell>
-              <TableCell className="py-2">
+              <TableCell className={cn(tableCellClass)}>
                 {categoryResults?.category2?.label || "-"}
               </TableCell>
-              <TableCell className="py-2">
+              <TableCell className={cn(tableCellClass)}>
                 {categoryResults?.category2?.confidence?.toFixed(2) || "-"}
               </TableCell>
             </TableRow>
@@ -57,10 +57,10 @@ export const CategoryResultTable = ({
               <TableCell className={cn(tableCellClass)}>
                 MercuryF (Short/Long)
               </TableCell>
-              <TableCell className="py-2">
+              <TableCell className={cn(tableCellClass)}>
                 {categoryResults?.category3?.label || "-"}
               </TableCell>
-              <TableCell className="py-2">
+              <TableCell className={cn(tableCellClass)}>
                 {categoryResults?.category3?.confidence?.toFixed(2) || "-"}
               </TableCell>
             </TableRow>
@@ -68,10 +68,10 @@ export const CategoryResultTable = ({
               <TableCell className={cn(tableCellClass)}>
                 LMars (Low/High)
               </TableCell>
-              <TableCell className="py-2">
+              <TableCell className={cn(tableCellClass)}>
                 {categoryResults?.category4?.label || "-"}
               </TableCell>
-              <TableCell className="py-2">
+              <TableCell className={cn(tableCellClass)}>
                 {categoryResults?.category4?.confidence?.toFixed(2) || "-"}
               </TableCell>
             </TableRow>
@@ -79,10 +79,10 @@ export const CategoryResultTable = ({
               <TableCell className={cn(tableCellClass)}>
                 Saturnus_Line
               </TableCell>
-              <TableCell className="py-2">
+              <TableCell className={cn(tableCellClass)}>
                 {categoryResults?.category5?.label || "-"}
               </TableCell>
-              <TableCell className="py-2">
+              <TableCell className={cn(tableCellClass)}>
                 {categoryResults?.category5?.confidence?.toFixed(2) || "-"}
               </TableCell>
             </TableRow>
