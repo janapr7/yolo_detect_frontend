@@ -7,6 +7,7 @@ import { CategoryResultTable } from "./CategoryResultTable";
 import { cn } from "@/utils/cn";
 import { RuleTable } from "./RuleTable";
 import { CategoryResult, Detection } from "@/types/detection";
+import { Typography } from "@/components/atoms/Typography/Typography";
 
 export const MatchRule = ({ file }: { file: File | null }) => {
   const { isLoading, isLoadingRule, setIsLoadingRule } = useDetectionStore();
@@ -94,7 +95,7 @@ export const MatchRule = ({ file }: { file: File | null }) => {
         categoryResults?.category4?.label ||
         categoryResults?.category5?.label) && (
         <>
-          <RuleTabs
+          {/* <RuleTabs
             selectedValue={selectedValue}
             setSelectedValue={setSelectedValue}
           />
@@ -105,6 +106,13 @@ export const MatchRule = ({ file }: { file: File | null }) => {
             {selectedValue === "cat2" && (
               <RuleTable categoryResults={categoryResults} />
             )}
+          </div> */}
+          <Typography variant="h3" className="mt-10">
+            Result
+          </Typography>
+          <div className="w-full flex flex-col gap-5 justify-start">
+            <CategoryResultTable categoryResults={categoryResults} />
+            <RuleTable categoryResults={categoryResults} />
           </div>
         </>
       )}
