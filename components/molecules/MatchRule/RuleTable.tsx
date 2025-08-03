@@ -71,8 +71,15 @@ export const RuleTable = ({ categoryResults }: { categoryResults: any }) => {
   const tableCellClass = "py-3";
   return (
     <div className="w-full overflow-x-auto">
-      <div className="w-full min-w-120 rounded border border-dark-secondary/80 dark:border-secondary/80">
-        <Table>
+      <div className="w-full min-w-120 rounded border border-dark-secondary/80 dark:border-secondary/80 py-3">
+        <ul className="list-disc pl-5 text-sm text-primary dark:text-dark-primary font-medium space-y-4">
+          <li>Opennes: {handleTraitLevel("openness")}</li>
+          <li>Conscientiousness: {handleTraitLevel("conscientiousness")}</li>
+          <li>Extraversion: {handleTraitLevel("extraversion")}</li>
+          <li>Aggreableness: {handleTraitLevel("agreeableness")}</li>
+          <li>Neuroticism: {handleTraitLevel("neuroticism")}</li>
+        </ul>
+        {/* <Table>
           <TableHeader>
             <TableRow className={cn(tableRowClassHead)}>
               <TableHead className={cn(tableCellClass)}>Trait</TableHead>
@@ -168,7 +175,7 @@ export const RuleTable = ({ categoryResults }: { categoryResults: any }) => {
               </TableCell>
             </TableRow>
           </TableBody>
-        </Table>
+        </Table> */}
       </div>
     </div>
   );
