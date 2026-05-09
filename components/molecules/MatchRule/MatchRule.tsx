@@ -12,6 +12,15 @@ import { Typography } from "@/components/atoms/Typography/Typography";
 export const MatchRule = ({ file }: { file: File | null }) => {
   const { isLoading, isLoadingRule, setIsLoadingRule } = useDetectionStore();
   const [selectedValue, setSelectedValue] = useState("cat1");
+  const [timing, setTiming] = useState<{
+    preprocess_ms: number;
+    inference_ms: number;
+    postprocess_ms: number;
+  }>({
+    preprocess_ms: 0,
+    inference_ms: 0,
+    postprocess_ms: 0,
+  });
   const [categoryResults, setCategoryResults] = useState<
     Record<string, CategoryResult>
   >({});
@@ -63,6 +72,8 @@ export const MatchRule = ({ file }: { file: File | null }) => {
 
       const data = await response.json();
       const boxes = data?.boxes;
+      const timing = data?.timing;
+      setTiming(timing);
       setCategoryResults(getTopDetectionsByCategory(boxes));
     } catch (error) {
       console.error("Error:", error);
@@ -109,6 +120,14 @@ export const MatchRule = ({ file }: { file: File | null }) => {
           </div> */}
           <Typography variant="h3" className="mt-10">
             Result
+          </Typography>
+          <Typography variant="body2" className="">
+            Speed: <span className="font-bold">{timing.preprocess_ms}ms</span>{" "}
+            preprocess,{" "}
+            <span className="font-bold">{timing.inference_ms}ms</span>{" "}
+            inference,{" "}
+            <span className="font-bold">{timing.postprocess_ms}ms</span>{" "}
+            postprocess per image
           </Typography>
           <div className="w-full flex flex-col gap-5 justify-start">
             <CategoryResultTable categoryResults={categoryResults} />

@@ -1,16 +1,32 @@
+"use client";
+
 import { cn } from "@/utils/cn";
 import { Disclosure, DisclosureButton } from "@headlessui/react";
 import { Menu, X } from "lucide-react";
 import Link from "next/link";
+import { useEffect, useState } from "react";
 import { ThemeToggle } from "./ThemeToggle";
 
+const HIDE_THRESHOLD = 100;
+
 export const NavBar = () => {
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > HIDE_THRESHOLD);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
   return (
     <>
       <Disclosure
         as="header"
         className={cn(
-          "w-full flex justify-center sticky top-0 backdrop-filter backdrop-blur-2xl bg-opacity-50 z-50 px-5"
+          "w-full flex justify-center sticky top-0 backdrop-filter backdrop-blur-2xl bg-opacity-50 z-50 px-5",
+          "transition-transform duration-300 ease-in-out",
+          scrolled ? "-translate-y-full" : "translate-y-0"
         )}
       >
         {({ open }) => (
